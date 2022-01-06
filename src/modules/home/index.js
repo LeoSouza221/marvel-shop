@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import axios from '../../utils/axios';
+import paramsSearch from '../../utils/paramsSearch';
 
 const HomeScreen = ({ navigation }) => {
   useEffect(() => {
-    axios.get(`/comics`)
+    const params = Object.assign(paramsSearch(), { limit: 20, offset: 0 })
+    console.log(params)
+    axios.get('/comics', { params })
       .then(({ data: { data: { results } } }) => {
         console.log(results)
       })
