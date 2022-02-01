@@ -5,10 +5,10 @@ const CardImages = (props) => {
   const { item } = props
   const formatUrl = (imageUrl, extension) => `${imageUrl}.${extension}`
   const formartPrice = (price) => price.toFixed(2)
-  const formatTitle = (text) => text.length > 30 ? `${text.substring(0,30)}...` : text
+  const formatTitle = (text) => text.length > 25 ? `${text.substring(0,30)}...` : text
 
   return (
-    <View style={styles.card}>
+    <React.Fragment>
       <View style={styles.cardImage}>
         {item.images.length > 0 ?
           <Image
@@ -30,8 +30,7 @@ const CardImages = (props) => {
           <Text style={styles.title}>{ formatTitle(item.title) }</Text>
         </View>
       </View>
-      
-    </View>
+    </React.Fragment>
   );
 }
 

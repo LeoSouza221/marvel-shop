@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, View, ScrollView, Button, Text, StyleSheet } from 'react-native';
+import { FlatList, View, ScrollView, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import CardImages from '../../components/cardImages';
 import axios from '../../utils/axios';
 import paramsSearch from '../../utils/paramsSearch';
@@ -7,7 +7,9 @@ import paramsSearch from '../../utils/paramsSearch';
 const HomeScreen = ({ navigation }) => {
   const [hqArray, setHqArray] = useState([]);
   const renderItem = ({ item }) => (
-    <CardImages item={item} key={item.id} />
+    <TouchableHighlight style={styles.touchableCard} key={item.id} onPress={() => navigation.navigate('Details', { id: item.id })}>
+      <CardImages item={item} key={item.id} />
+    </TouchableHighlight>
   );
   useEffect(() => {
     const params = Object.assign(paramsSearch(), { limit: 20, offset: 0 })
@@ -36,10 +38,6 @@ const HomeScreen = ({ navigation }) => {
           keyExtractor={item => item.id}
         >
         </FlatList>
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('Details')}
-        />
       </ScrollView>
     </View>
   );
@@ -50,7 +48,20 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 0,
     justifyContent: 'center'
-  },                                                                                       
+  },                
+  touchableCard: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 8,
+    borderRadius: 10,
+    borderWidth: 2,
+    justifyContent: 'center',
+    width: '45%',
+    height: 250,
+    elevation: 50
+  },                                                               
   title: {
     padding: 7,
     fontWeight: 700,
