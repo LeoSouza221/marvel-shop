@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
   },                                                                                 
   title: {
     fontSize: 12,
-    fontWeight: 500
+    fontWeight: '500'
   },
   priceText: {
     fontSize: 22,
-    fontWeight: 700
+    fontWeight: '700'
   },
   image: {
     resizeMode: 'contain',

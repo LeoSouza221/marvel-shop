@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },                                                               
   title: {
     padding: 7,
-    fontWeight: 700,
+    fontWeight: '700',
     fontSize: 28,
   },
   divider: {
