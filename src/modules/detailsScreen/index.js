@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from '../../utils/axios';
 import paramsSearch from '../../utils/paramsSearch';
 
@@ -53,8 +54,10 @@ const DetailsScreen = ({ route }) => {
       <View style={styles.cardActions}>
         <Button
           title="Adicionar ao carrinho"
-          color="#841584"
-        />
+          color="#3483fa"
+        >
+          <Icon name="home" size={18} color="#999" />
+        </Button>
       </View>
     </View>
   );

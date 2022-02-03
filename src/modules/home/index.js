@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, View, ScrollView, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import CardImages from '../../components/cardImages';
 import axios from '../../utils/axios';
 import paramsSearch from '../../utils/paramsSearch';
@@ -24,7 +25,8 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.pageTitle}>
+        <Icon name="book" size={30} />
         <Text style={styles.title}>Quadrinhos</Text>
       </View>
       <View style={ styles.divider }>
@@ -78,6 +80,10 @@ const styles = StyleSheet.create({
     borderColor: '#757575',
     height: 5,
     width: '95%'
+  },
+  pageTitle: {
+    display: 'block',
+    padding: 10
   }
 });
 
