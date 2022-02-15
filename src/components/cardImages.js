@@ -46,12 +46,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 8,
-    borderRadius: 10,
-    borderWidth: 2,
     justifyContent: 'center',
     width: '45%',
     height: 250,
-    elevation: 50
   },
   cardImage: {
     display: "flex",

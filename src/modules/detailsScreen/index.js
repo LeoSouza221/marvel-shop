@@ -23,32 +23,38 @@ const DetailsScreen = ({ route }) => {
   }, [])
 
   return (
-    <View style={styles.box}>
-      <View>
-        <Text style={styles.title}>{ formatTitle(hqDetail.title) }</Text>
-      </View>
-      <View style={styles.cardImage}>
-        {hqDetail.images && hqDetail.images.length > 0 ?
-          <Image
-            style={styles.image}
-            source={{
-              uri: formatUrl(hqDetail.images[0].path, hqDetail.images[0].extension),
-            }}
-          /> :
-          <View style={styles.cardNoImage}>
-            <Text style={styles.title}>Sem imagens</Text>
+    <View style={styles.screen}>
+      <View style={styles.card}>
+        <View>
+          <Text style={styles.title}>{ formatTitle(hqDetail.title) }</Text>
+          <Icon name="heart" size={26} color="#999" />
+        </View>
+        <View style={styles.cardImage}>
+          {hqDetail.images && hqDetail.images.length > 0 ?
+            <Image
+              style={styles.image}
+              source={{
+                uri: formatUrl(hqDetail.images[0].path, hqDetail.images[0].extension),
+              }}
+            /> :
+            <View style={styles.cardNoImage}>
+              <Text style={styles.title}>Sem imagens</Text>
+            </View>
+          }
+        </View>
+        <View style={ styles.divider }>
+          <View style={ styles.dividerLine }></View>
+        </View>
+        <View style={styles.cardText}>
+          <View>
+            <Text style={styles.priceText}>${ formartPrice(hqDetail.prices) }</Text>
           </View>
-        }
-      </View>
-      <View style={styles.cardText}>
-        <View>
-          <Text style={styles.priceText}>${ formartPrice(hqDetail.prices) }</Text>
-        </View>
-        <View>
-          <Text style={styles.details}><Text style={styles.detailName}>Descricao:</Text> { hqDetail.description }</Text>
-        </View>
-        <View>
-          <Text style={styles.details}><Text style={styles.detailName}>Paginas:</Text> { hqDetail.pageCount }</Text>
+          <View>
+            <Text style={styles.details}><Text style={styles.detailName}>Descricao:</Text> { hqDetail.description }</Text>
+          </View>
+          <View>
+            <Text style={styles.details}><Text style={styles.detailName}>Paginas:</Text> { hqDetail.pageCount }</Text>
+          </View>
         </View>
       </View>
       <View style={styles.cardActions}>
@@ -67,20 +73,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 0,
-    justifyContent: 'center'
+    alignContent: 'center'
   },
   card: {
     flex: 1,
     backgroundColor: '#fff',
     padding: 10,
-    marginVertical: 8,
-    marginHorizontal: 8,
     borderRadius: 10,
-    borderWidth: 2,
-    justifyContent: 'center',
-    width: '45%',
-    height: 250,
-    elevation: 50
+    width: '100%',
+    maxHeight: '95%',
+    backgroundColor: '#fff'
   },
   cardImage: {
     display: "flex",
@@ -109,10 +111,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0
   },
-  box: {
+  screen: {
     width: '100%',
     height: '100%',
-    padding: '5%'
+    padding: '5%',
   },                                                                                 
   title: {
     fontSize: 20,
@@ -134,6 +136,18 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 300,
     width: '100%'
+  },
+  divider: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+  },
+  dividerLine: {
+    paddingHorizontal: 5,
+    borderBottomWidth: 2,
+    borderColor: 'rgba(0,0,0,.1)',
+    height: 5,
+    width: '95%'
   },
 });
 

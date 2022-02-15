@@ -7,11 +7,6 @@ import paramsSearch from '../../utils/paramsSearch';
 
 const HomeScreen = ({ navigation }) => {
   const [hqArray, setHqArray] = useState([]);
-  const renderItem = ({ item }) => (
-    <TouchableHighlight style={styles.touchableCard} key={item.id} onPress={() => navigation.navigate('Details', { id: item.id })}>
-      <CardImages item={item} key={item.id} />
-    </TouchableHighlight>
-  );
   useEffect(() => {
     const params = Object.assign(paramsSearch(), { limit: 20, offset: 0 })
     console.log(params)
@@ -36,7 +31,11 @@ const HomeScreen = ({ navigation }) => {
         <FlatList
           numColumns = {2}
           data={hqArray}
-          renderItem={renderItem}
+          renderItem={({ item }) => (
+            <TouchableHighlight style={styles.touchableCard} onPress={() => navigation.navigate('Details', { id: item.id })}>
+              <CardImages item={item} key={item.id} />
+            </TouchableHighlight>
+          )}
           keyExtractor={item => item.id}
         >
         </FlatList>
@@ -58,16 +57,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 8,
     borderRadius: 10,
-    borderWidth: 2,
     justifyContent: 'center',
     width: '45%',
     height: 250,
     elevation: 50
   },                                                               
   title: {
-    padding: 7,
+    paddingHorizontal: 7,
     fontWeight: '700',
     fontSize: 28,
+    color: 'rgba(0,0,0,.9)',
   },
   divider: {
     display: 'flex',
@@ -77,13 +76,14 @@ const styles = StyleSheet.create({
   dividerLine: {
     paddingHorizontal: 5,
     borderBottomWidth: 2,
-    borderColor: '#757575',
+    borderColor: 'rgba(0,0,0,.1)',
     height: 5,
     width: '95%'
   },
   pageTitle: {
     display: 'block',
-    padding: 10
+    paddingHorizontal: 10,
+    paddingTop: 10
   }
 });
 
