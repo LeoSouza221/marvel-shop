@@ -1,15 +1,11 @@
-import { ADD_COMIC } from '../actions/actionTypes';
-
-const initialState = {};
+const initialState = {
+  comics: []
+};
 
 export const addComic = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_COMIC:
-      return {
-        ...state,
-        newValue: action.newValue
-      };
-    default:
-      return state;
+  console.log('aqui')
+  return {
+    ...state,
+    comics: [...state.comics, action.newComics],
   }
 };

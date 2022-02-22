@@ -1,1 +1,1 @@
-export const ADD_COMIC = 'ADD_COMIC'
+export const ADD_COMIC = 'COMIC/ADD_COMIC'
