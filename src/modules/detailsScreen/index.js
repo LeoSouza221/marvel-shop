@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addComic } from '../../../store/actions';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from '../../utils/axios';
 import paramsSearch from '../../utils/paramsSearch';
@@ -10,7 +13,9 @@ const DetailsScreen = ({ route }) => {
   const formatUrl = (imageUrl, extension) => `${imageUrl}.${extension}`
   const formartPrice = (price) => price?.length ? price[0].price.toFixed(2) : 0
   const formatTitle = (text) => text
-  
+  const addNewComicToStore = (comic) => {
+    addComic(comic)
+  }
 
   useEffect(() => {
     const params = paramsSearch()
@@ -61,9 +66,8 @@ const DetailsScreen = ({ route }) => {
         <Button
           title="Adicionar ao carrinho"
           color="#3483fa"
-        >
-          <Icon name="home" size={18} color="#999" />
-        </Button>
+          onPress={addNewComicToStore(hqDetail)}
+        />
       </View>
     </View>
   );
@@ -151,4 +155,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailsScreen
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ addComic }, dispatch);
+
+export default connect(mapDispatchToProps)(DetailsScreen);
